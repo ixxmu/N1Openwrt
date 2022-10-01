@@ -68,7 +68,22 @@ jobs:
         SW_FLOWOFFLOAD: 0
         SFE_FLOW: 0
         ENABLE_WIFI_K510: 0
-             
+    
+    - name: Upload firmware to release
+      uses: softprops/action-gh-release@v1
+      if: env.PACKAGED_STATUS == 'success' && !cancelled()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: OpenWrt_${{ env.PACKAGED_OUTPUTDATE }}
+        files: ${{ env.PACKAGED_OUTPUTPATH }}/*.img.xz
+        body: |
+          首次使用本固件建议全新刷写
+          * 基本信息
+          IP: 192.168.3.2
+          账户: root
+          密码: password
+          
     - name: Create release
       if:  env.RELEASE == 'true' && !cancelled()
       uses: ncipollo/release-action@v1
