@@ -53,6 +53,8 @@ jobs:
         types: s905d
         out: ${{ env.UPLOAD }}
         sub-name: ${{ env.SUB_VERSION}}
+        whoami: ixxmu
+        githubrepository: ixxmu
         openwrt-url: https://github.com/ixxmu/N1Openwrt/releases/download/${{ env.version }}/openwrt-armvirt-64-default-rootfs-${{ env.SUB_VERSION }}.tar.gz 
     
     - name: Package OpenWrt with flippy script(+)     
@@ -62,6 +64,8 @@ jobs:
         kernel-version: latest+
         out: ${{ env.UPLOAD }}
         sub-name: ${{ env.SUB_VERSION}}
+        whoami: ixxmu
+        githubrepository: ixxmu
         openwrt-url: https://github.com/ixxmu/N1Openwrt/releases/download/${{ env.version }}/openwrt-armvirt-64-default-rootfs-${{ env.SUB_VERSION }}.tar.gz 
              
     - name: Create release
