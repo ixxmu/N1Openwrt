@@ -68,22 +68,6 @@ jobs:
         tag_name: OpenWrt_${{ env.PACKAGED_OUTPUTDATE }}
         files: ${{ env.PACKAGED_OUTPUTPATH }}/*.img.xz
         body: |
-          首次使用本固件建议全新刷写
-          * 基本信息
-          IP: 192.168.3.2
-          账户: root
-          密码: password
-          
-    - name: Create release
-      if:  env.RELEASE == 'true' && !cancelled()
-      uses: ncipollo/release-action@v1
-      with:
-        name: ${{ env.DATE }} / N1-Openwrt | 编译
-        allowUpdates: true
-        tag: ${{ env.version }}
-        commit: master
-        token: ${{ secrets.RELEASES_TOKEN   }}
-        body: |
           默认IP：192.168.31.2 默认密码： password
           全新刷入emmc方法：
              1. 固件刷入U盘。
@@ -98,7 +82,6 @@ jobs:
              4. chmod +x update-amlogic-openwrt.sh
              5. gzip -d  *.img.gz
              6. ./update-amlogic-openwrt.sh xxxx.img 
-        artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
                 
     - name: Delete workflow runs
       uses: GitRML/delete-workflow-runs@main
