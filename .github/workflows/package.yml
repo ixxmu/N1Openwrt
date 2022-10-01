@@ -107,8 +107,7 @@ jobs:
              3. 升级脚本下载 update-amlogic-openwrt.sh
              4. chmod +x update-amlogic-openwrt.sh
              5. gzip -d  *.img.gz
-             6. ./update-amlogic-openwrt.sh xxxx.img
-             
+             6. ./update-amlogic-openwrt.sh xxxx.img 
         artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
                 
     - name: Delete workflow runs
